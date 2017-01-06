@@ -19,10 +19,11 @@ Because of the way the phase data is extracted here, you need to modify the way 
 The original code has the real and imaginary data ordered such that real is in odd position and imaginary is in even position. 
 When I used GMT to read in the SLC grids, I read all the real number first and then the imaginary number. 
 
-The phase is loaded in ps_load_initial.m, ps_load_initial_gamma.m or sb_load_initial.m. So you need to changed the code to be:
+The phase is loaded in ps_load_initial.m, ps_load_initial_gamma.m or sb_load_initial.m. So you need to change the code:
 
 original:
 ph(:,i)=complex(ph_bit(1:2:end),ph_bit(2:2:end));
+
 modified:
 ph(:,i)=complex(ph_bit(1:n_ps),ph_bit(n_ps+1:end));
 
